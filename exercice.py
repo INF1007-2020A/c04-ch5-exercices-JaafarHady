@@ -6,29 +6,94 @@ from typing import List
 
 
 def convert_to_absolute(number: float) -> float:
-    return 0
+
+    if number > 0 :
+        pass
+    else:
+        number = number*(-1)
+
+    return number
 
 
 def use_prefixes() -> List[str]:
     prefixes, suffixe = 'JKLMNOPQ', 'ack'
 
-    return [""]
+    word_list = []
+
+    for pre in prefixes :
+        word_list.append(pre+suffixe)
+    return word_list
 
 
 def prime_integer_summation() -> int:
-    return 0
+    prime = [2, 3, 5]
+    number = 6
+    while len(prime)<100 :
+        premier = True
+        for i in range(2, number-1) :
+            if number%i == 0 :
+                premier = False
+                number += 1
+                break
+        if premier :
+            prime.append(number)
+            number += 1
+    return sum(prime)
 
 
 def factorial(number: int) -> int:
-    return 0
+    factorielle = 1
+    for i in range(0,number-1) :
+        factorielle *= (number-i)
+    return factorielle
 
 
 def use_continue() -> None:
-    pass
+    for i in range(1,10) :
+        if i == 5 :
+            continue
+        else:
+            print(i)
+
+
 
 
 def verify_ages(groups: List[List[int]]) -> List[bool]:
-    return []
+    acceptable = []
+    for i in range(len(groups)) :
+        if len(groups[i]) <= 2 :
+            acceptable.append(False)
+        elif len(groups[i]) > 9 :
+            acceptable.append(False)
+        else:
+            for age in groups[i] :
+                if age == 25 :
+                    acceptable.append(True)
+                    break
+                elif age < 18 :
+                    acceptable.append(False)
+                    break
+                elif age == 50 :
+                    for age in groups[i] :
+                        if age > 70 :
+                            acceptable.append(False)
+                    break
+                elif age > 70 :
+                    for age in groups[i] :
+                        if age == 50 :
+                            acceptable.append(False)
+                    break
+                else :
+                    acceptable.append(True)
+                    break
+
+
+
+
+
+
+
+    return [acceptable]
 
 
 def main() -> None:
